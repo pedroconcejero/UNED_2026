@@ -17,6 +17,7 @@ library(leaflet)
 # latitude/longitude coordinates, 
 # and can either appear as icons or as circles.
 # 40.451487512414616, -3.737671385135911
+# 40.45152587678677, -3.7378453725554888
 
 my_map <- leaflet() %>% 
   addTiles() %>%
@@ -51,6 +52,9 @@ m %>% addTiles()
 # Pero no funcionará lo siguiente (lo he comentado por eso)
 #m %>% addProviderTiles(providers$Stamen.Toner)
 # https://docs.stadiamaps.com/guides/migrating-from-stamen-map-tiles/
+
+#repo de tiles providers: 
+# https://alexurquhart.github.io/free-tiles/
 
 m %>% addProviderTiles(providers$CartoDB.Positron)
 
@@ -102,7 +106,7 @@ mypalette <- colorBin(palette = "PiYG",
 
 m %>% addPolygons(fillColor = ~mypalette(tasa.paro.reducida$intervalos_num), 
                   stroke = TRUE,
-                  fillOpacity = 1)
+                  fillOpacity = 0.5)
 
 ###
 # con otro proveedor de "Tiles"

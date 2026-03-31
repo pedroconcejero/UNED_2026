@@ -1,4 +1,4 @@
-# Master Big Data UNED 2025-
+# Master Big Data UNED 2026-
 # Script para probar librería mapSpain
 # Siguiendo la documentación del autor según nos lo explicó en R-madrid
 # https://github.com/dieghernan/rpubs
@@ -48,9 +48,6 @@ ggplot(galicia) +
       ) +
       theme_bw()
 
-N <- 4
-pie(rep(1, N),
-    col = hcl.colors(N, "PiYG"))
 
 #Si exploramos el dataset:
 
@@ -170,12 +167,6 @@ esp_dict_translate(vals, lang = "ga")
 # La información se proporciona en diferentes proyecciones y niveles de 
 # resolución.
 
-esp <- esp_get_country(moveCAN = TRUE)
-
-ggplot(esp) +
-  geom_sf(fill = "#f9cd94") +
-  theme_light()
-
 ### El caso Canarias
 
 # Por defecto, **mapSpain** "desplaza" Canarias para una mejor visualización en 
@@ -207,6 +198,7 @@ ggplot(Provs) +
 # realizar analisis espaciales, se debe usar `moveCAN = FALSE`**
 
 ### NUTS
+?esp_get_nuts
 
 # NUTS-1 -Baja Resolución
 nuts2 <- esp_get_nuts(resolution = 01, 
@@ -304,34 +296,6 @@ ggplot(provs) +
   labs(fill = "Provincias")
 
 
-## Municipios
-
-munic <- esp_get_munic(region = "Barcelona") %>%
-    # Datos de ejemplo: Población INE
-    left_join(mapSpain::pobmun19, by = c("cpro", "cmun"))
-  
-ggplot(munic) +
-    geom_sf(aes(fill = pob19), 
-            alpha = 0.9, 
-            color = NA) +
-    scale_fill_gradientn(
-      colors = hcl.colors(100, "Inferno"),
-      n.breaks = 10,
-      labels = scales::label_comma(),
-      guide = guide_legend()
-    ) +
-    labs(
-      fill = "Habitantes",
-      title = "Población en Segovia",
-      subtitle = "Datos INE (2019)"
-    ) +
-    theme_void() +
-    theme(
-      plot.background = element_rect("grey80"),
-      text = element_text(face = "bold"),
-      plot.title = element_text(hjust = .5),
-      plot.subtitle = element_text(hjust = .5)
-    )
 
 ## Hexbin maps
 

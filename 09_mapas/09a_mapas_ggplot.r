@@ -32,8 +32,6 @@ plot(andalucia)
 # Con cambios en escalas de color a partir de taller de color de grupo R madrid:
 # https://github.com/pedroconcejero/taller-color/blob/master/taller_color_def_grupo_madrid.rmd
 
-githubURL1 <- "https://github.com/pedroconcejero/UNED_master_visualizacion/blob/main/tasas_paro_andalucia.rda?raw=true"
-
 load("tasas_paro_andalucia.rda")
 
 str(tasa.paro.and.provincial)
@@ -133,7 +131,7 @@ ggplot(tasa.paro.and.provincial) +
                                   size = rel(1.4)), 
         legend.text = element_text(size = rel(1.1)), 
         strip.text = element_text(face = "bold", size = rel(1))) + 
-  labs(list(x = "", y = "", fill = "")) + 
+  labs(x = "", y = "", fill = "") + 
   ggtitle("Tasa de paro\npor edad y estudios")
 
 
